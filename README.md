@@ -37,9 +37,9 @@ To avoid clustering of requests, an element of randomness, called jitter, is inc
 
 
 ```
-res, err := SendRequest()
-    base, cap := time.Second, time.Minute
-for backoff := base; err != nil; backoff <<= 1 { if backoff > cap {
+        res, err := SendRequest()
+        base, cap := time.Second, time.Minute
+        for backoff := base; err != nil; backoff <<= 1 { if backoff > cap {
             backoff = cap
         }
         jitter := rand.Int63n(int64(backoff * 3))
