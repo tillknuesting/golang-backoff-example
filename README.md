@@ -46,7 +46,6 @@ To avoid clustering of requests, an element of randomness, called jitter, is inc
         sleep := base + time.Duration(jitter)
         time.Sleep(sleep)
         res, err = SendRequest()
-}
 
 ```
 
