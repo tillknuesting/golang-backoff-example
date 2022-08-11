@@ -50,8 +50,8 @@ func (s cryptoSource) Uint64() (v uint64) {
 
 // Using withExponentialBackoff as the backoff function sends retries
 // initially with a 1-second delay, but doubling after each attempt to
-// a maximum delay of 1-minute. Each backoff time gets an additional
-// randomness is generated cryptographic secure and nondeterministic.
+// a maximum delay of 1-minute. The jitter is a randomization factor.
+// Randomness is generated cryptographic secure and nondeterministic.
 func retryWithExponentialBackoffAndJitter(retries int) (string, error) {
 	res, err := sendRequest()
 
