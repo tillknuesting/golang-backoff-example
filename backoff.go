@@ -24,7 +24,7 @@ var count = 0
 func sendRequest() (string, error) {
 	count++
 
-	if count <= 50 {
+	if count <= 10 {
 		return "", errors.New("error from send request")
 	}
 
