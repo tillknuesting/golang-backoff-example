@@ -49,7 +49,7 @@ To avoid clustering of requests, an element of randomness, called jitter, is inc
 
 ```
 
-
+gRPC privides this out of the box https://github.com/grpc/grpc-go/tree/v1.48.0/examples/features/retry
 
 
     
