@@ -1,6 +1,6 @@
 # golang-backoff-example
 
-So when a client calls a server and fails e.g. because it timeouted we tend to retry the request, right?
+So when a client calls a server and fails, e.g., because it timeouts, we tend to retry the request.
 
 This could lead to code like this that retries until it succeeds:
 
@@ -12,14 +12,14 @@ This could lead to code like this that retries until it succeeds:
     }
    ```
    
-The problem is that if every instance of the downstream service failed the retry loop leads to potential thousand requests that can degrade the entire network and thus other services - this cascading failure is known as retry storm. 
+The problem is that if every instance of the downstream service fails, the retry loop leads to potential thousand requests that can degrade the entire network and thus other services - this cascading failure is known as a retry storm. 
 
-If we implement a retry mechanism we should always include a backoff algorithm.
+If we implement a retry mechanism, we should always include a backoff algorithm.
 
 So if we want to retry, how long should we wait?
 
 
-A naive solution would this:
+A naive solution would be this:
 
 
 
@@ -30,10 +30,10 @@ res, err := SendRequest() forerr!=nil{
      }
 ```
 
-A fixed-duration backoff delay might work fine if you have a very small number of retrying instances, but it doesn't scale and therefore exponential backoff algorithms are used.
+A fixed-duration backoff delay might work fine if there are a tiny number of retrying instances, but it does not scale, so exponential backoff algorithms are used.
 
 
-To avoid clustering of requests, an element of randomness, called jitter, is included.
+An element of randomness, called jitter, is included to avoid clustering requests.
 
 
 ```
@@ -49,7 +49,7 @@ To avoid clustering of requests, an element of randomness, called jitter, is inc
 
 ```
 
-gRPC privides this out of the box https://github.com/grpc/grpc-go/tree/v1.48.0/examples/features/retry
+gRPC provides this out of the box https://github.com/grpc/grpc-go/tree/v1.48.0/examples/features/retry
 
 
     
